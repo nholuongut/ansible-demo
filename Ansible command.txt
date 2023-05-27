@@ -1,0 +1,77 @@
+ansible-playbook -k -i listhost playbook.yaml
+ansible-playbook -u root -k -i listhost playbook.yaml
+
+ cd /etc/ansible/
+    7  ls
+    8  vi listhost
+    9  ls
+   10  cd roles/
+   11  ls
+   12  mkdir basic
+   13  cd basic/tasks
+   14  mkdir basic/tasks
+   15  mkdir basic/templates
+   16  cd basic/tasks/
+   17  vi main.yaml
+   18  cd ..
+   19  ls
+   20  cd templates/
+   21  ls
+   22  vi ../tasks/main.yaml
+   23  vi sysctl.conf
+   24  ls
+   25  vi ../tasks/main.yaml
+   26  cd
+   27  ls /etc/ansible/
+   28  ls
+   29  vi playbook
+   30  ls
+   31  mv playbook /etc/ansible/playbook.yaml
+   32  ls /etc/ansible/
+   33  vi lis
+   34  ls
+   35  cd /etc/ansible/
+   36  ls
+   37  vi listhost
+   38  cd roles/
+   39  ls
+   40  mkdir bpmn
+   41  mkdir bpmn/tasks
+   42  mkdir rabbitmq
+   43  mkdir rabbitmq/tasks
+   44  ls
+   45  cd
+   46  cd /etc/ansible/
+   47  ansible-playbook -k -i listhost playbook.yaml
+   48  vi roles/basic/tasks/main.yaml
+   49  ansible-playbook -k -i listhost playbook.yaml
+   50  vi listhost
+   51  ssh root@172.16.151.51
+   52  ssh root@172.16.151.52
+   53  ssh root@172.16.151.53
+   54  ansible-playbook -k -i listhost playbook.yaml
+   55  vi roles/basic/templates/chrony.conf
+   56  ansible-playbook -k -i listhost playbook.yaml
+   57  ssh root@172.16.151.50
+   58  vi /etc/ansible/listhost
+   59  vi /etc/ansible/roles/basic/tasks/main.yaml
+   60  ssh root@172.16.151.53
+   61  cd /etc/ansible/
+   62  ansible-playbook -k -i listhost playbook.yaml
+   63  ssh root@172.16.151.50
+   64  mkdir /root/certs
+   65  ls /root/certs
+   66  ssh root@172.16.151.50
+   67  scp /root/certs/* root@172.16.151.50:/etc/nginx/certs/
+   68  ssh root@172.16.151.50
+   69  ls
+   70  scp bpmn-engine.tar.gz root@172.16.151.50:/opt/
+   71  scp bpmn-engine.tar.gz root@172.16.151.51:/opt/
+   72  scp bpmn-engine.tar.gz root@172.16.151.52:/opt/
+   73  scp bpmn-engine.tar.gz root@172.16.151.53:/opt/
+   74  ssh root@172.16.151.51
+   75  ssh root@172.16.151.52
+   76  ssh root@172.16.151.53
+   77  ssh root@172.16.151.50
+2:20 PM
+history | grep ansible

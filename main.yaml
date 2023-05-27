@@ -1,0 +1,74 @@
+---
+    - name: Edit Limit config file
+      lineinfile:
+        dest: /etc/security/limits.d/20-nproc.conf
+        line: "{{ item.line }}"
+        state: present
+      with_items:
+          - { line: '*           soft    nofile         64000' }
+          - { line: '*           hard    nofile         64000' }
+
+    - name: Update package
+      become: yes
+      shell: yum update -y
+
+    - name: Set timezone to UTC
+      timezone:
+        name: Asia/Ho_Chi_Minh
+
+    - name: Stop firewalld service
+      systemd:
+        state: stopped
+        name: firewalld
+      ignore_errors: yes
+
+    - name : Remove firewalld package
+      yum:
+        name:
+          - firewalld
+        state: removed
+      ignore_errors: yes
+
+    - name : Install basic packages
+      yum:
+        name:
+          - vim
+          - wget
+          - net-tools
+          - telnet
+          - rsync
+          - sshpass
+          - epel-release
+          - cifs-utils
+          - bind-utils
+          - yum-utils 
+        state: present
+      ignore_errors: yes
+
+    - name: Update chrony config
+      template:
+        src: templates/chrony.conf
+        dest: /etc/chrony.conf
+
+    - name: Update sysctl file
+      template:
+        src: templates/sysctl.conf
+        dest: /etc/sysctl.conf
+
+    - name: Disable selinux
+      replace: 
+        path: /etc/sysconfig/selinux
+        regexp: 'SELINUX=enforcing'
+        replace: 'SELINUX=disabled'
+        backup: yes
+
+    - name: Disable selinux
+      replace: 
+        path: /etc/sysconfig/selinux
+        regexp: 'SELINUX=permissive'
+        replace: 'SELINUX=disabled'
+        backup: yes
+
+    - name: reboot all server
+      reboot:
+        reboot_timeout: 3600

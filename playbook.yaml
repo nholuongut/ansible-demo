@@ -1,0 +1,14 @@
+- hosts: basic
+  become: yes
+  roles:
+    - { role: basic }
+
+- hosts: bpmn
+  become: yes
+  roles:
+    - { role: bpmn }
+
+- hosts: rabbitmq
+  become: yes
+  roles:
+    - { role: rabbitmq }
